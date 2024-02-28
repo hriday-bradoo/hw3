@@ -9,10 +9,12 @@ class PlacesController < ApplicationController
 def show
   # find a place
   @places = Place.find_by({"id" => params["id"]})
+  # find related entries
+  @entries = Entry.where({"place_id" => @places["id"]})
 end
 
 def new
-  # render view with new Company form
+  # render view with new place form
 end
 
 def create
